@@ -1,6 +1,16 @@
+
+
 import java.util.Comparator;
 
-public class MyLinkedList<T> implements MyList {
+public class MyLinkedList<T> implements MyList<T> {
+   private int size;
+   private Node<T> next;
+   private Node<T> previous;
+   public MyLinkedList(){
+       this.size=0;
+       this.next = null;
+       this.previous=null;
+   }
 
     @Override
     public int size() {
