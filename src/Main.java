@@ -18,5 +18,8 @@ public class Main {
         list2.add(2);
         list2.add(3);
         list2.returnList();
+        list2.remove(1);
+        list2.returnList();
+        System.out.println("After remove list has " + list2.size()+ " elements");
     }
 }

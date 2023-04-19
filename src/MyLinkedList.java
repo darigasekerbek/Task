@@ -134,14 +134,41 @@ public class MyLinkedList<T> implements MyList<T> {
 
     @Override
     public int lastIndexOf(Object o) {
-        return 0;
+       int lastIndex = -1;
+       Node<T> node = next;
+       for(int i = 0; i<size; i++){
+           if(node.data.equals(o)){
+               lastIndex = i;
+           }
+           node = node.a;
+       }
+        return lastIndex;
     }
+
 
     @Override
-    public void sort(Comparator comparator) {
-
+    public void sort(Comparator<? super T> comparator) {
+        if (size <= 1) {
+            return;
+        }
+        Node<T> unsorted = next.a;
+        next.a = null;
+        while (unsorted != null) {
+            Node<T> node = unsorted;
+            unsorted = unsorted.a;
+            if (comparator.compare(node.data, next.data) < 0) {
+                node.a = next;
+                next = node;
+            } else {
+                Node<T> curr = next;
+                while (curr.a != null && comparator.compare(node.data, next.data) < 0) {
+                    curr = curr.a;
+                }
+                node.a = curr.a;
+                curr.a = node;
+            }
+        }
     }
-
     public void checkIndex(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
