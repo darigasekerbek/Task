@@ -121,9 +121,16 @@ public class MyArrayList <T> implements MyList{
          }
      } while (swapped);
     }
+
     public void checkIndex (int index){
         if(index < 0 || index >=size){
             throw new IndexOutOfBoundsException();
         }
+    }
+    public void returnList(){
+        for (int i=0; i<size; i++){
+            System.out.print(arr[i]+" ");
+        }
+        System.out.println();
     }
 }
