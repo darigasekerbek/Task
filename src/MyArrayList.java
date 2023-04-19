@@ -1,3 +1,5 @@
+import java.util.Comparator;
+
 public class MyArrayList <T> implements MyList{
     private T[] arr;
     private int size;
@@ -102,9 +104,22 @@ public class MyArrayList <T> implements MyList{
         return -1;
     }
 
-    @Override
-    public void sort() {
 
+    @Override
+    public void sort(Comparator comparator) {
+     boolean swapped;
+     do {
+         swapped = false;
+         for(int i=0; i<size - 1; i++){
+             if (comparator.compare(arr[i], arr[i+1])>0){
+                 T temp = arr[i];
+                 arr[i] = arr[i+1];
+                 arr[i+1] = temp;
+                 swapped = true;
+
+             }
+         }
+     } while (swapped);
     }
     public void checkIndex (int index){
         if(index < 0 || index >=size){

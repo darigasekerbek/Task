@@ -1,3 +1,5 @@
+import java.util.Comparator;
+
 public interface MyList<T> {
     int size();
     boolean contains(Object o);
@@ -9,6 +11,8 @@ public interface MyList<T> {
     T get(int index);
     int indexOf(Object o);
     int lastIndexOf(Object o);
-    void sort();
+
+
+    void sort(Comparator comparator);
 }
 
