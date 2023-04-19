@@ -36,7 +36,17 @@ public class MyArrayList <T> implements MyList{
 
     @Override
     public void add(Object item, int index) {
-
+    if(index < 0 && index >= size){
+        throw new IndexOutOfBoundsException(index + size);}
+    else {
+      if (size == arr.length)
+        increase();
+      for (int i = size - 1; i>=index; i--){
+          arr[i+1] = arr[i];
+      }
+      arr[index] = (T) item;
+      size++;
+    }
     }
 
     @Override
