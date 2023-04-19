@@ -38,7 +38,9 @@ public class MyLinkedList<T> implements MyList<T> {
 
     @Override
     public void add(Object item, int index) {
-    checkIndex(index);
+       if(index < 0 || index > size){
+            throw new IndexOutOfBoundsException();
+       }
     Node<T> newNode = (Node<T>) new Node<>(item);
     if(size ==0 ){
         next =newNode;
