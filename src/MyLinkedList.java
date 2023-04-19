@@ -20,6 +20,7 @@ public class MyLinkedList<T> implements MyList<T> {
            this.a = null;
        }
    }
+
     @Override
     public int size() {
         return size;
@@ -104,12 +105,17 @@ public class MyLinkedList<T> implements MyList<T> {
 
     @Override
     public void clear() {
-
+    next = null;
+    previous = null;
+    size = 0;
     }
 
     @Override
-    public Object get(int index) {
-        return null;
+    public T get(int index) {
+       checkIndex(index);
+       Node<T> node = getNode(index);
+       return node.data;
+
     }
 
     @Override
@@ -131,5 +137,13 @@ public class MyLinkedList<T> implements MyList<T> {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
+    }
+    public void returnList(){
+      Node<T> list2 = next;
+      while (list2!=null){
+          System.out.print(list2.data + " ");
+          list2 = list2.a;
+      }
+      System.out.println();
     }
 }
