@@ -14,11 +14,16 @@ public class MyArrayList <T> implements MyList{
     }
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
     public boolean contains(Object o) {
+        for (int i = 0; i<size;i++){
+            if(o.equals(arr[i])){
+                return true;
+            }
+        }
         return false;
     }
 
