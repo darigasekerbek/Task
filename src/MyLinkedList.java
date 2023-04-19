@@ -11,25 +11,58 @@ public class MyLinkedList<T> implements MyList<T> {
        this.next = null;
        this.previous=null;
    }
+   private static class Node<T>{
+       T data;
+       Node<T> a;
 
+       public Node(T data){
+           this.data = data;
+           this.a = null;
+       }
+   }
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
     public boolean contains(Object o) {
-        return false;
+        return indexOf(o)!=-1;
     }
 
     @Override
     public void add(Object item) {
-
+    add(item,size);
     }
 
     @Override
     public void add(Object item, int index) {
+    checkIndex(index);
+    Node<T> newNode = (Node<T>) new Node<>(item);
+    if(size ==0 ){
+        next =newNode;
+        previous = newNode;}
+    else if (index == 0) {
+        newNode.a = next;
+        next = newNode;}
+    else if(index == size){
+        previous.a = newNode;
+        previous = newNode;
+    }
+    else {
+        Node<T> node =getNode(index - 1);
+        newNode.a = node.a;
+        node.a = newNode;
+      }
+    size++;
+   }
 
+    private Node<T> getNode(int index) {
+       Node<T> node = next;
+       for(int i = 0; i<index; i++){
+           node = node.a;
+       }
+       return node;
     }
 
     @Override
@@ -65,5 +98,11 @@ public class MyLinkedList<T> implements MyList<T> {
     @Override
     public void sort(Comparator comparator) {
 
+    }
+
+    public void checkIndex(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
     }
 }
