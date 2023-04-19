@@ -122,7 +122,14 @@ public class MyLinkedList<T> implements MyList<T> {
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+       Node <T> node = next;
+       for(int n = 0; n<size; n++){
+           if(node.data.equals(o)){
+               return n;
+           }
+           node = node.a;
+       }
+        return -1;
     }
 
     @Override
