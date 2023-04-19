@@ -5,7 +5,13 @@ public class MyArrayList <T> implements MyList{
         this.arr = (T[]) new Object[5];
         this.size = 0;
     }
-
+    public void increase(){
+        T[] newArr = (T[]) new Object[arr.length * 2];
+        for(int i=0; i<arr.length;i++){
+            newArr[i] = arr[i];
+        }
+        arr = newArr;
+    }
     @Override
     public int size() {
         return 0;
