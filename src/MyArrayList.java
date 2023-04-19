@@ -51,6 +51,12 @@ public class MyArrayList <T> implements MyList{
 
     @Override
     public boolean remove(Object item) {
+        for (int index = 0; index <size;index++){
+            if(item.equals(arr[index])){
+                remove(index);
+                return true;
+            }
+        }
         return false;
     }
 
